@@ -1,5 +1,4 @@
 using System;
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -34,6 +33,7 @@ public class widdershins : MonoBehaviour
 	private static readonly string[][] positiveExtras = new string[2][] { new string[2] { "handed", "true" }, new string[2] { "super", "ultra" } };
 	private static readonly string[][] negativeExtras = new string[2][] { new string[2] { "not", "n't" }, new string[2] { "counter", "contra" } };
 	private static readonly string[] directionNames = new string[8] { "north", "northeast", "east", "southeast", "south", "southwest", "west", "northwest" };
+    private bool resetting;
 	private Coroutine arrowMovement;
 
     private static int moduleIdCounter = 1;
@@ -63,15 +63,15 @@ public class widdershins : MonoBehaviour
 		audio.PlayGameSoundAtTransform(KMSoundOverride.SoundEffect.ButtonPress, button.transform);
 		var offsets = new int[] { -1, 1 };
 		var ix = Array.IndexOf(arrowButtons, button);
-		SetArrow((selectedDirection + 8 + offsets[ix]) % 8, true);
+		SetArrow((selectedDirection + 8 + offsets[ix]) % 8);
 	}
 
-	void SetArrow(int direction, bool reason)
+	void SetArrow(int direction)
 	{
 		selectedDirection = direction;
 		if (arrowMovement != null)
 			StopCoroutine(arrowMovement);
-		arrowMovement = StartCoroutine(MoveArrow(selectedDirection, reason));
+		arrowMovement = StartCoroutine(MoveArrow(selectedDirection));
 	}
 
 	void PressSubmitButton()
@@ -94,10 +94,11 @@ public class widdershins : MonoBehaviour
 
 	void PressClearButton()
 	{
-		audio.PlaySoundAtTransform("click", clearButton.transform);
+        resetting = true;
+        audio.PlaySoundAtTransform("click", clearButton.transform);
 		if (moduleSolved)
 			return;
-		SetArrow(previousDirection, false);
+		SetArrow(previousDirection);
 	}
 
 	void GenerateStage()
@@ -159,9 +160,12 @@ public class widdershins : MonoBehaviour
 		}
 	}
 
-	IEnumerator MoveArrow(int end, bool reason)
+	IEnumerator MoveArrow(int end)
 	{
-		audio.PlaySoundAtTransform(reason ? "squeak" : "reset", arrow);
+		if (!resetting)
+            audio.PlaySoundAtTransform("squeak", arrow);
+        else if (resetting && previousDirection != selectedDirection)
+            audio.PlaySoundAtTransform("reset", arrow);
 		var elapsed = 0f;
 		var duration = .25f;
 		var startRotation = arrow.localRotation;
@@ -173,5 +177,6 @@ public class widdershins : MonoBehaviour
 			elapsed += Time.deltaTime;
 		}
 		arrow.localRotation = endRotation;
+        resetting = false;
 	}
 }
