@@ -157,7 +157,8 @@ public class widdershins : MonoBehaviour
                 direction = "clockwise";
             else
                 direction = "counterclockwise";
-            Debug.LogFormat("[Widdershins #{0}] Stage {1}: You need to set the arrow {2} places {3} from the current position. That's {4}.", moduleId, stage + 1, Mathf.Abs(offset), direction, directionNames[correctDirection]);
+            Debug.LogFormat("[Widdershins #{0}] Stage {1}: The display says {2}.", moduleId, stage + 1, wordText.text);
+            Debug.LogFormat("[Widdershins #{0}] This means you need to set the arrow {1} places {2} from the current position. That's {3}.", moduleId, Mathf.Abs(offset), direction, directionNames[correctDirection]);
         }
     }
 
