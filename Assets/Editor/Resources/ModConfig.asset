@@ -14,8 +14,9 @@ MonoBehaviour:
   id: widdershins
   title: Widdershins
   author: TasThing
-  description: The superior way to say [strike]anti[/strike] [strike]contra[/strike]
-    counter-clockwise!
+  description: "The superior way to say [strike]anti[/strike] [strike]contra[/strike]
+    counter-clockwise!\n\nModule idea by EpicToast, implementation by TasThing.\r\n\r\nManual
+    HTML: https://ktane.timwi.de/HTML/Widdershins.html\r\nManual PDF: https://ktane.timwi.de/PDF/Widdershins.pdf"
   version: 
   outputFolder: build
   previewImage: {fileID: 2800000, guid: 5c14b2639fbd0c1428054306c81a5387, type: 3}
