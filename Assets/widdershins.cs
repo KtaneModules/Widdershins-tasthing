@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.RegularExpressions;
 using UnityEngine;
 using KModkit;
 using rnd = UnityEngine.Random;
@@ -176,5 +177,37 @@ public class widdershins : MonoBehaviour
             elapsed += Time.deltaTime;
         }
         arrow.localRotation = endRotation;
+    }
+
+    // Twitch Plays
+    #pragma warning disable 414
+    private readonly string TwitchHelpMessage = "!{0} [left/right] [1-7]: Presses that arrow that many times. !{0} submit: Submits the current position. !{0} reset: Resets.";
+    #pragma warning restore 414
+    IEnumerator ProcessTwitchCommand(string input)
+    {
+        var cmd = input.ToLowerInvariant();
+        if (cmd == "submit")
+        {
+            yield return null;
+            submitButton.OnInteract();
+            yield break;
+        }
+        else if (cmd == "reset")
+        {
+            yield return null;
+            clearButton.OnInteract();
+            yield break;
+        }
+        var m = Regex.Match(cmd, @"^(left|right) ([1-7])$");
+        if (!m.Success)
+            yield break;
+        var ix = m.Groups[1].Value == "left" ? 0 : 1;
+        var count = int.Parse(m.Groups[2].Value);
+        yield return null;
+        for (int i = 0; i < count; i++)
+        {
+            arrowButtons[ix].OnInteract();
+            yield return new WaitForSeconds(.2f);
+        }
     }
 }
