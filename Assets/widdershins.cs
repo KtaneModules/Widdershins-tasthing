@@ -183,6 +183,7 @@ public class widdershins : MonoBehaviour
     #pragma warning disable 414
     private readonly string TwitchHelpMessage = "!{0} [left/right] [1-7]: Presses that arrow that many times. !{0} submit: Submits the current position. !{0} reset: Resets.";
     #pragma warning restore 414
+
     IEnumerator ProcessTwitchCommand(string input)
     {
         var cmd = input.ToLowerInvariant();
@@ -209,5 +210,21 @@ public class widdershins : MonoBehaviour
             arrowButtons[ix].OnInteract();
             yield return new WaitForSeconds(.2f);
         }
+    }
+
+    IEnumerator TwitchHandleForcedSolve()
+    {
+        for (int i = stage; i < 4; i++)
+        {
+            while (selectedDirection != correctDirection)
+            {
+                arrowButtons[0].OnInteract();
+                yield return new WaitForSeconds(.1f);
+            }
+            yield return new WaitForSeconds(.2f);
+            submitButton.OnInteract();
+            yield return new WaitForSeconds(.2f);
+        }
+        yield return true;
     }
 }
