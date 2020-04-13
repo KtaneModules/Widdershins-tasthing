@@ -16,6 +16,7 @@ public class widdershins : MonoBehaviour
     public KMSelectable[] arrowButtons;
     public KMSelectable clearButton;
     public KMSelectable submitButton;
+    public Color[] textColors;
     public TextMesh wordText;
     public TextMesh numberText;
     public Transform arrow;
@@ -111,12 +112,13 @@ public class widdershins : MonoBehaviour
             module.HandlePass();
             moduleSolved = true;
             Debug.LogFormat("[Widdershins #{0}] Module solved!", moduleId);
-            audio.PlayGameSoundAtTransform(KMSoundOverride.SoundEffect.CorrectChime, transform);
+            audio.PlaySoundAtTransform("solve", transform);
             wordText.text = "";
             numberText.text = "";
         }
         else
         {
+            wordText.color = textColors[stage];
             if (stage != 0)
                 Debug.LogFormat("[Widdershins #{0}] Progressing to the next stage...", moduleId);
             isCcw = rnd.Range(0, 2) == 0;
