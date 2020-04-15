@@ -33,7 +33,7 @@ public class widdershins : MonoBehaviour
     private static readonly string[] cwWords = new string[4] { "dextral", "forwards", "dextrorotatory", "right" };
     private static readonly string[] ccwWords = new string[4] { "sinistral", "backwards", "levorotatory", "left" };
     private static readonly string[][] positiveExtras = new string[2][] { new string[2] { "handed", "true" }, new string[2] { "super", "ultra" } };
-    private static readonly string[][] negativeExtras = new string[2][] { new string[2] { "not", "n’t" }, new string[2] { "counter", "contra" } };
+    private static readonly string[][] negativeExtras = new string[2][] { new string[2] { "not", @"n’t" }, new string[2] { "counter", "contra" } };
     private static readonly string[] directionNames = new string[8] { "north", "northeast", "east", "southeast", "south", "southwest", "west", "northwest" };
     private Coroutine arrowMovement;
 
@@ -227,6 +227,5 @@ public class widdershins : MonoBehaviour
             submitButton.OnInteract();
             yield return new WaitForSeconds(.2f);
         }
-        yield return true;
     }
 }

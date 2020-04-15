@@ -926,7 +926,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1517412331344714}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.017, z: 0}
+  m_LocalPosition: {x: 0, y: 0.015, z: 0}
   m_LocalScale: {x: 1.2, y: 1.2, z: 1.2}
   m_Children: []
   m_Father: {fileID: 4923504549523374}
@@ -1026,7 +1026,7 @@ Transform:
   m_GameObject: {fileID: 1404762812113294}
   m_LocalRotation: {x: 0, y: 0.7071068, z: -0, w: -0.7071068}
   m_LocalPosition: {x: -0.0212, y: -0.0241, z: 0.0624}
-  m_LocalScale: {x: 0.15, y: 0.15, z: 0.15}
+  m_LocalScale: {x: 0.15, y: 0.1, z: 0.15}
   m_Children:
   - {fileID: 4387106114980672}
   m_Father: {fileID: 4240972506680952}
@@ -1227,7 +1227,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1342061976778690}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.017, z: 0}
+  m_LocalPosition: {x: 0, y: 0.014999987, z: 0}
   m_LocalScale: {x: 1.2, y: 1.2, z: 1.2}
   m_Children: []
   m_Father: {fileID: 4219800081102142}
@@ -1523,7 +1523,7 @@ Transform:
   m_GameObject: {fileID: 1441545885174944}
   m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 0.0048, y: -0.0241, z: 0.0624}
-  m_LocalScale: {x: 0.15, y: 0.14999999, z: 0.15}
+  m_LocalScale: {x: 0.15, y: 0.1, z: 0.15}
   m_Children:
   - {fileID: 4095485171397944}
   m_Father: {fileID: 4240972506680952}
@@ -3944,7 +3944,7 @@ MonoBehaviour:
   - {fileID: 114914600643179114}
   - {fileID: 114283144120116232}
   IsPassThrough: 0
-  ChildRowLength: 0
+  ChildRowLength: 2
   Highlight: {fileID: 114481041003132964}
   SelectableColliders: []
   DefaultSelectableIndex: 0
@@ -4145,6 +4145,11 @@ MonoBehaviour:
   - {fileID: 114841234279600148}
   clearButton: {fileID: 114914600643179114}
   submitButton: {fileID: 114283144120116232}
+  textColors:
+  - {r: 0.9485294, g: 0.32082614, b: 0.32082614, a: 1}
+  - {r: 0.9705882, g: 0.6651384, b: 0.20696369, a: 1}
+  - {r: 0.9327885, g: 0.9705882, b: 0.2854671, a: 1}
+  - {r: 0.47789046, g: 1, b: 0.27205884, a: 1}
   wordText: {fileID: 102939299312006314}
   numberText: {fileID: 102438827008195460}
   arrow: {fileID: 4967764220160644}
